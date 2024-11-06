@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Visualizar Usuários</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <h1>Lista de Usuários</h1>
+  <table id="usersTable">
+    <thead>
+      <tr>
+        <th>Nome</th>
+        <th>Email</th>
+      </tr>
+    </thead>
+    <tbody>
+      <!-- Os dados serão inseridos aqui -->
+    </tbody>
+  </table>
+
+  <h2>Criar Novo Usuário</h2>
+  <form id="createUserForm">
+    <div>
+      <label for="name">Nome:</label>
+      <input type="text" id="name" name="name" required>
+    </div>
+    <div>
+      <label for="email">Email:</label>
+      <input type="email" id="email" name="email" required>
+    </div>
+    <div>
+      <label for="password">Senha:</label>
+      <input type="password" id="password" name="password" required>
+    </div>
+    <button type="submit">Criar Usuário</button>
+    <p id="message"></p>
+  </form>
+
+  <script>
+    // Função para buscar usuários da API
+    async function fetchUsers() {
+      const response = await fetch('http://localhost:3000/users');
+      const users = await response.json();
+
+      const tableBody = document.querySelector('#usersTable tbody');
+      tableBody.innerHTML = ''; // Limpa a tabela
+
+      users.forEach(user => {
+        const row = document.createElement('tr');
+        row.innerHTML = `
+          <td>${user.name}</td>
+          <td>${user.email}</td>
+        `;
+        tableBody.appendChild(row);
+      });
+    }
+
+    // Função para criar novo usuário
+    document.querySelector('#createUserForm').addEventListener('submit', async function(event) {
+      event.preventDefault();
+
+      const name = document.querySelector('#name').value;
+      const email = document.querySelector('#email').value;
+      const password = document.querySelector('#password').value;
+
+      const response = await fetch('http://localhost:3000/users', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ name, email, password })
+      });
+
+      const result = await response.json();
+
+      if (response.ok) {
+        document.querySelector('#message').textContent = 'Usuário criado com sucesso!';
+        fetchUsers(); // Atualiza a lista de usuários
+      } else {
+        document.querySelector('#message').textContent = 'Erro ao criar o usuário.';
+      }
+    });
+
+    // Chama a função para carregar os usuários ao abrir a página
+    fetchUsers();
+  </script>
+
+</body>
+</html>
