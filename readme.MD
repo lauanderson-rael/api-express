@@ -1,12 +1,17 @@
 # Testando a API
 
-### Instale as dependencias e inicialize o projeto, rodando os seguintes comandos no terminal
-
+### Instale as dependencias do projeto, com o seguinte comando no terminal
   npm install
 
+### Inicie o servidor MongoDB (requer o mongoDB instalado)
+crie o diretorio 'C:\data\db' <br>
+rode o comando abaixo no terminal  <br>
+mongod
+
+### Inicialize o projeto
   npm start
 
-### Utilizando alguma ferramenta de testar API, como 'Postman, Insomnia ou ThunderClient'. Faça um POST para http://localhost:3000/users com o body abaixo
+### Utilizando alguma ferramenta de testar API, como 'Postman, Insomnia ou ThunderClient' <br>Faça um POST para http://localhost:3000/users com o body abaixo
 
 <div style="color: aqua ">
   {
@@ -47,3 +52,15 @@ Ao abrir o MongoDB Compass, você verá uma tela para conectar-se ao banco de da
 <p>
 O MongoDB Compass é uma ferramenta excelente para quem quer evitar interações por linha de comando e prefere uma interface visual para gerenciar dados MongoDB.
 </p>
+
+
+### Extenções vscode para ajudar no desenvolvimento
+
+<ul>
+  <li>IntelliSense for CSS class names in HTML</li>
+  <li>Color Highlight</li>
+  <li>Material Icon Theme</li>
+  <li>Thunder Client</li>
+  <li>Prettier - Code formatter</li>
+  <li>JavaScript (ES6) code snippets</li>
+</ul>

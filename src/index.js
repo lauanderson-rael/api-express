@@ -12,7 +12,6 @@ app.use(cors());
 // Middleware para interpretar JSON
 app.use(express.json());
 
-
 // Conexão com o MongoDB
 mongoose.connect('mongodb://localhost:27017/meubanco', { useNewUrlParser: true, useUnifiedTopology: true })
   .then(() => console.log('MongoDB conectado'))

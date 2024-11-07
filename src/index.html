@@ -5,39 +5,48 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Visualizar Usuários</title>
   <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.min.css">
 </head>
-<body>
+<body class="p-4">
+  <main class="d-block gap-4 d-sm-flex ">
+  
+  <div class="w-75"> 
+    <h1>Lista de Usuários</h1>
+    <table id="usersTable" class="table table-striped border">
+      <thead >
+        <tr>
+          <th scope="col" class="rounded">Nome</th>
+          <th scope="col">Email</th>
+        </tr>
+      </thead>
+      <tbody>
+        <!-- Os dados serão inseridos aqui -->
+      </tbody>
+    </table>
+  </div>
+  
+  <div>
+    <h2>Criar Novo Usuário</h2>
+    <form id="createUserForm" class=" border p-2 rounded-2">
+      <div class="mb-3">
+        <label class="form-label fw-bold" for="name">Nome:</label>
+        <input class="form-control" type="text" id="name" name="name" placeholder="Nome de usuário" required>
+      </div>
+      <div class="mb-3">
+        <label class="form-label fw-bold" for="email">Email:</label>
+        <input  class="form-control" type="email" id="email" name="email" placeholder="email@exemplo.com" required>
+      </div>
+      <div>
+        <label class="form-label fw-bold" for="password">Senha:</label>
+        <input class="form-control" type="password" id="password" name="password" placeholder="Senha" required>
+      </div>
+  
+      <button type="submit" class="btn btn-success mt-2">Criar Usuário</button>
+      <span id="message" style="color: red;"></span>
+    </form>
+  </div>
 
-  <h1>Lista de Usuários</h1>
-  <table id="usersTable">
-    <thead>
-      <tr>
-        <th>Nome</th>
-        <th>Email</th>
-      </tr>
-    </thead>
-    <tbody>
-      <!-- Os dados serão inseridos aqui -->
-    </tbody>
-  </table>
-
-  <h2>Criar Novo Usuário</h2>
-  <form id="createUserForm">
-    <div>
-      <label for="name">Nome:</label>
-      <input type="text" id="name" name="name" required>
-    </div>
-    <div>
-      <label for="email">Email:</label>
-      <input type="email" id="email" name="email" required>
-    </div>
-    <div>
-      <label for="password">Senha:</label>
-      <input type="password" id="password" name="password" required>
-    </div>
-    <button type="submit">Criar Usuário</button>
-    <p id="message"></p>
-  </form>
+  </main>
 
   <script>
     // Função para buscar usuários da API
@@ -87,6 +96,6 @@
     // Chama a função para carregar os usuários ao abrir a página
     fetchUsers();
   </script>
-
+  
 </body>
 </html>
